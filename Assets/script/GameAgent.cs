@@ -4,34 +4,33 @@ using UnityEngine;
 
 public class GameAgent : MonoBehaviour {
     private float mTotalTime = 0;
-    private void Awake()
-    {
+    private void Awake() {
         MFNetManager.GetInstance().Init(new MFSocketClient());
+        Character c = new Character();
+        IMFCommand command = new MFMoveCommand();
+        command.Execute(c);
+        command = new MFJumpCommand();
+        command.Execute(c);
     }
-	// Use this for initialization
-    private void Start ()
-    {
+    // Use this for initialization
+    private void Start() {
         MFNetManager.GetInstance().Connect();
     }
-	
-	// Update is called once per frame
-    private void Update ()
-    {
+
+    // Update is called once per frame
+    private void Update() {
         MFNetManager.GetInstance().Update();
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         mTotalTime += Time.deltaTime;
-        if (mTotalTime > 1f)
-        {
+        if (mTotalTime > 1f) {
             //MFNetManager.GetInstance().Send("222");
             mTotalTime = 0f;
         }
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         MFNetManager.GetInstance().DisConnect();
     }
 }
