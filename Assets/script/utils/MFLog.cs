@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class MFLog {
     private static void Log(LogType logType, string message) {
@@ -10,8 +11,8 @@ public class MFLog {
     /// <summary>
     /// 打印日志
     /// </summary>
-    public static void LogInfo(string message) {
-        Log(LogType.Log, message);
+    public static void LogInfo(object message) {
+        Log(LogType.Log, message as string);
     }
 
     /// <summary>
@@ -26,5 +27,9 @@ public class MFLog {
     /// </summary>
     public static void LogWarning(string message) {
         Log(LogType.Warning, message);
+    }
+
+    public static void AssertNotNull(object obj) {
+        Assert.IsNotNull(obj);
     }
 }

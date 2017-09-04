@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameAgent : MonoBehaviour {
     private float mTotalTime = 0;
     private void Awake() {
-        MFNetManager.GetInstance().Init(new MFSocketClient());
+        MFNetManager.GetInstance().Init(new MFSocketClient("127.0.0.1", 2333, new MFJsonSerialzable()));
         Character c = new Character();
         IMFCommand command = new MFMoveCommand();
         command.Execute(c);

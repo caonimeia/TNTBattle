@@ -28,9 +28,7 @@ class MFNetManager {
     }
 
     public void Connect() {
-        const string ip = "127.0.0.1";
-        const int port = 2333;
-        _socketClient.Connect(ip, port);
+        _socketClient.Connect();
     }
 
     public void DisConnect() {
