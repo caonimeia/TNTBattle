@@ -5,8 +5,7 @@ using UnityEngine.Assertions;
 public class MFLog {
     private static void Log(LogType logType, params object[] messages) {
         string message = "";
-        foreach (object tmp in messages)
-        {
+        foreach (object tmp in messages) {
             message = message + tmp + '\t';
         }
 
@@ -17,8 +16,7 @@ public class MFLog {
     /// <summary>
     /// 打印日志
     /// </summary>
-    public static void LogInfo(params object[] messages)
-    {
+    public static void LogInfo(params object[] messages) {
         Log(LogType.Log, messages);
     }
 
