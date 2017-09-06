@@ -8,6 +8,6 @@ public class MFFileReaderTestCase {
     [Test]
     public void TestReadTabFile()
     {
-        MFFileReader.LoadTabFile("Assets/tabfile/test.tab", "2");
+        MFFileReader.LoadTabFile<TestClass>("Assets/tabfile/test.tab", "2");
     }
 }
