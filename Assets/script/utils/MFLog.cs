@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -32,6 +33,16 @@ public class MFLog {
     /// </summary>
     public static void LogWarning(params object[] messages) {
         Log(LogType.Warning, messages);
+    }
+
+    /// <summary>
+    /// 打印对象属性 目前只支持public属性
+    /// </summary>
+    public static void LogObject(object o) {
+        Type t = o.GetType();
+        foreach(FieldInfo pi in t.GetFields()) {
+            LogInfo(pi.Name, pi.GetValue(o));
+        }
     }
 
     public static void AssertNotNull(object obj) {
