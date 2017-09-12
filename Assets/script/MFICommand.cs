@@ -1,9 +1,10 @@
 ﻿
 
 using System;
+using UnityEngine;
 
 public interface IMFMoveable {
-    void Move();
+    void Move(float x, float y, float z);
 }
 
 public interface IMFJumpable {
@@ -11,22 +12,22 @@ public interface IMFJumpable {
 }
 
 public interface IMFCommand {
-    void Execute(object obj);
+    void Execute(object obj, params object[] param);
 }
 
-public class MFMoveCommand : IMFCommand {
-    public void Execute(object obj) {
+public class MFMoveCommand {
+    public void Execute(object obj, float x, float y, float z) {
         var o = (obj as IMFMoveable);
         if(o == null) {
             MFLog.LogError("");
             return;
         }
-        o.Move();
+        o.Move(x, y, z);
     }
 }
 
 public class MFJumpCommand : IMFCommand {
-    public void Execute(object obj) {
+    public void Execute(object obj, params object[] param) {
         var o = (obj as IMFJumpable);
         if (o == null) {
             MFLog.LogError("");
@@ -37,12 +38,17 @@ public class MFJumpCommand : IMFCommand {
 }
 
 
-public class Character : IMFMoveable, IMFJumpable {
+public class Character : MonoBehaviour, IMFMoveable, IMFJumpable {
     public void Jump() {
         MFLog.LogInfo("character jump");
     }
 
-    public void Move() {
+    public void Move(float x, float y, float z) {
         MFLog.LogInfo("character move");
     }
+}
+
+public class MFMoveComponent : MonoBehaviour {
+    public float speed;
+
 }

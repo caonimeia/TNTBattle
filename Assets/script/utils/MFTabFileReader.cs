@@ -11,6 +11,7 @@ public class TestClass {
         a, b, c
     }
 
+
     public int id;
     public string name;
     public float rate;
