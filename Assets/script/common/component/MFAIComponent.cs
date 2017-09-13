@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MFAIComponent : MonoBehaviour {
-    private MFMoveComponent moveComp;
+    private MFMoveComponent _moveComp;
 
     private void Awake() {
-        moveComp = GetComponent<MFMoveComponent>();
+        _moveComp = GetComponent<MFMoveComponent>();
     }
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,6 @@ public class MFAIComponent : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        moveComp.Move(0.1f * Time.deltaTime, 0, 0.1f * Time.deltaTime);
+        _moveComp.Move(0.1f * Time.deltaTime, 0, 0.1f * Time.deltaTime);
     }
 }
