@@ -36,19 +36,3 @@ public class MFJumpCommand : IMFCommand {
         o.Jump();
     }
 }
-
-
-public class Character : MonoBehaviour, IMFMoveable, IMFJumpable {
-    public void Jump() {
-        MFLog.LogInfo("character jump");
-    }
-
-    public void Move(float x, float y, float z) {
-        MFLog.LogInfo("character move");
-    }
-}
-
-public class MFMoveComponent : MonoBehaviour {
-    public float speed;
-
-}

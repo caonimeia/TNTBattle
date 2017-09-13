@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class MFInputMgr {
     private static MFInputMgr _instance;
-    private Character _character;
+    private GameObject _character;
     private MFInputMgr() {
 
     }
+
     public static MFInputMgr GetInstance() {
         if (null == _instance) {
             _instance = new MFInputMgr();
@@ -17,34 +18,29 @@ public class MFInputMgr {
         return _instance;
     }
 
-    public void Init(Character c) {
-        BindCharacter(c);
+    public void Init() {
+        
     }
 
-    public void BindCharacter(Character c) {
-        _character = c;
+    public void BindCharacter(GameObject character) {
+        _character = character;
     }
 
     public void Update() {
-        //float translation = Input.GetAxis("Vertical") * speed;
-        //float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
-        //translation *= Time.deltaTime;
-        //rotation *= Time.deltaTime;
-        //transform.Translate(0, 0, translation);
-        //transform.Rotate(0, rotation, 0);
+        ProcessMoveInput();
+    }
 
+    private void ProcessMoveInput() {
         float moveX = 0;
         float moveZ = 0;
-        if (Input.GetAxis("Horizontal") != 0) {
-            moveX = Input.GetAxis("Horizontal") * 1.0f * Time.deltaTime;
-        }
 
-        if (Input.GetAxis("Vertical") != 0) {
-            moveZ = Input.GetAxis("Vertical") * 1.0f * Time.deltaTime;
-        }
+        if (Input.GetAxis("Horizontal") != 0)
+            moveX = Input.GetAxis("Horizontal") * Time.deltaTime;
 
-        //Vector3 move = new Vector3(moveX, 0, moveZ);
-        MFMoveCommand cmd = new MFMoveCommand();
-        cmd.Execute(_character, moveX, 0, moveZ);
+        if (Input.GetAxis("Vertical") != 0)
+            moveZ = Input.GetAxis("Vertical") * Time.deltaTime;
+
+        if (moveX != 0 || moveZ != 0)
+            _character.GetComponent<MFMoveComponent>().Move(moveX, 0, moveZ);
     }
 }

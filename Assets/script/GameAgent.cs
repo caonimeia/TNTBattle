@@ -9,15 +9,9 @@ public class GameAgent : MonoBehaviour {
 
     private void Awake() {
         _netMgr.Init(new MFSocketClient("127.0.0.1", 2333, new MFJsonSerialzable()));
-        _inputMgr.Init(new Character());
-
-        // todo 移动到单元测试
-        //Character c = new Character();
-        //IMFCommand command = new MFMoveCommand();
-        //command.Execute(c);
-        //command = new MFJumpCommand();
-        //command.Execute(c);
+        _inputMgr.Init();
     }
+
     // Use this for initialization
     private void Start() {
         MFNetManager.GetInstance().Connect();
