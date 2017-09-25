@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MFInputMgr {
     private static MFInputMgr _instance;
-    private GameObject _character;
+    private MFCharacter _character;
     private MFInputMgr() {
 
     }
@@ -22,7 +22,7 @@ public class MFInputMgr {
         
     }
 
-    public void BindCharacter(GameObject character) {
+    public void BindCharacter(MFCharacter character) {
         _character = character;
     }
 
@@ -41,6 +41,6 @@ public class MFInputMgr {
             moveZ = Input.GetAxis("Vertical") * Time.deltaTime;
 
         if (moveX != 0 || moveZ != 0)
-            _character.GetComponent<MFMoveComponent>().Move(moveX, 0, moveZ);
+            _character.Move(moveX, 0, moveZ);
     }
 }
