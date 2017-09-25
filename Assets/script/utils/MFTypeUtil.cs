@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class MFTypeUtil{
+public static class MFTypeUtil{
 
     /// <summary>
     /// 转换为目标属性类型

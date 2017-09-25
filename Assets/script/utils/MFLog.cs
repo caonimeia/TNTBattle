@@ -3,7 +3,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class MFLog {
+public static class MFLog {
     private static void Log(LogType logType, params object[] messages) {
         string message = "";
         foreach (object tmp in messages) {

@@ -5,7 +5,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
-public class MFTabFileReader {
+public static class MFTabFileReader {
     private const string REMARK_SIGN         = "#";          // 以 # 开头为注释 
     private const char   SPLITTER_SIGN       = '\t';         // tab文件以'\t'作为分隔符
 
