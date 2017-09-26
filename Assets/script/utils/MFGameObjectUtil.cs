@@ -24,7 +24,7 @@ public static class MFGameObjectUtil {
     }
 
     /// <summary>
-    /// 通过路径查找GameObject或Component中的子节点
+    /// 通过路径查找GameObject或Component中子节点的Component
     /// </summary>
     public static T Find<T>(Object target, string path) where T : Component {
         T targetT = null;
@@ -41,5 +41,21 @@ public static class MFGameObjectUtil {
             MFLog.LogError(string.Format("{0}[path={1}] is not found!", typeof(T), path));
 
         return targetT;
+    }
+
+    /// <summary>
+    /// 通过路径查找GameObject或Component中子节点(GameObject)
+    /// </summary>
+    public static GameObject Find(Object target, string path) {
+        GameObject targetGo = null;
+        Transform transform = GetTransform(target);
+        if (transform)
+            if (transform = transform.Find(path))
+                targetGo = transform.gameObject;
+
+        if (!target)
+            MFLog.LogError(string.Format("GameObject[path={0}] is not found!", path));
+
+        return targetGo;
     }
 }
