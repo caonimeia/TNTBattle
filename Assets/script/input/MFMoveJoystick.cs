@@ -30,11 +30,15 @@ public class MFMoveJoystick : MonoBehaviour {
 
     private void RegisterEvent() {
         stickButton.onClick.AddListener(OnStickButtonClick);
+        
     }
 
 
     private void OnStickButtonClick() {
-
+        Vector3 result = Vector3.zero;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(gameObject.GetComponent<RectTransform>(), Vector2.zero, MFUIMgr.camera2D, out result);
+        MFLog.LogInfo(result);
+        //MFLog.LogInfo(Input.mousePosition);
         //_character.Move(1, 0, 1);
     }
 

@@ -10,6 +10,8 @@ public class GameAgent : MonoBehaviour {
     private void Awake() {
         _netMgr.Init(new MFSocketClient("127.0.0.1", 2333, new MFJsonSerialzable()));
         _inputMgr.Init();
+
+        MFUIMgr.Init();
     }
 
     // Use this for initialization
