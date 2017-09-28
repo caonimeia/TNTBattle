@@ -16,9 +16,14 @@ public class MFAIComponent : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        RaycastHit hit;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
+        if (Physics.Raycast(transform.position, fwd, out hit))
+            Debug.DrawLine(transform.position, hit.point, Color.red);
+
+
         transform.Translate(0, 0, 10 * Time.deltaTime);
         Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
         if (Physics.SphereCast(ray, 0.75f, out hit)) {
            
             if (hit.distance < obstacleRange) {
