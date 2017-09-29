@@ -38,6 +38,6 @@ public class MFFileReaderTestCase {
             Assert.AreEqual(tc.rate, 0.01f);
             Assert.AreEqual(tc.te, TestClass.Te.b);
         //}
-        List<TestLanguage> list_1 = MFTabFileReader.LoadTabFile<TestLanguage>("Assets/tabfile/Language.tab");
+        //List<TestLanguage> list_1 = MFTabFileReader.LoadTabFile<TestLanguage>("Assets/tabfile/Language.tab");
     }
 }

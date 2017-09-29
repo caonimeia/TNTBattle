@@ -23,7 +23,7 @@ public class MFGameObjectUtilTestCase {
         Rigidbody pr1 = parent.AddComponent<Rigidbody>();
         GameObject child = new GameObject("aaa");
         Rigidbody r1 = child.AddComponent<Rigidbody>();
-        MeshFilter m1 = child.AddComponent<MeshFilter>();
+        child.AddComponent<MeshFilter>();
         child.transform.SetParent(parent.transform);
 
         Rigidbody r2 = MFGameObjectUtil.Find<Rigidbody>(parent, "aaa");

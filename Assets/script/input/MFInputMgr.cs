@@ -27,6 +27,7 @@ public class MFInputMgr {
     }
 
     public void Update() {
+        ProcessCommand();
         ProcessMoveInput();
     }
 
@@ -42,5 +43,11 @@ public class MFInputMgr {
 
         if (moveX != 0 || moveZ != 0)
             _character.Move(moveX, 0, moveZ);
+    }
+
+    private void ProcessCommand() {
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.D))
+            MFApplicationUtil.SwitchDebugMode();
+
     }
 }
