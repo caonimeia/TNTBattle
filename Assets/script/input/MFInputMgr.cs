@@ -46,8 +46,13 @@ public class MFInputMgr {
     }
 
     private void ProcessCommand() {
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.D))
+        // 切换debug模式
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.D))
             MFApplicationUtil.SwitchDebugMode();
+
+        // 把炸弹装在自己头上
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.B))
+            _character.ReceiveBoom();
 
     }
 }

@@ -40,15 +40,15 @@ public class MFAIComponent : MonoBehaviour {
     }
 
     private void RandomMove() {
-        RaycastHit hit;
-
         #region debug模式下显示射线
         if (MFApplicationUtil.IsOpenDebug()) {
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit))
-                Debug.DrawLine(transform.position, hit.point, Color.red);
+            RaycastHit dhit;
+            if (Physics.Raycast(new Ray(transform.position, transform.forward), out dhit))
+                Debug.DrawLine(transform.position, dhit.point, Color.red);
         }
         #endregion
 
+        RaycastHit hit;
         while (true) {
             Ray ray = new Ray(transform.position, transform.forward);
             if (Physics.Raycast(ray, out hit)) {
