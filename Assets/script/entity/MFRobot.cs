@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MFAIComponent))]
-[RequireComponent(typeof(MFMoveComponent))]
 public class MFRobot : MonoBehaviour {
-    private void Awake() {
+    private MFMoveComponent _moveComp;
+    private MFBoomComponent _boomComp;
+    private MFAIComponent   _aiComp;
 
+    private void Awake() {
+        _moveComp = gameObject.AddComponent<MFMoveComponent>();
+        _boomComp = gameObject.AddComponent<MFBoomComponent>();
+        _aiComp   = gameObject.AddComponent<MFAIComponent>();
     }
 
     // Use this for initialization
