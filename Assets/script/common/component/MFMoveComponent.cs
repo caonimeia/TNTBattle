@@ -15,10 +15,10 @@ public class MFMoveComponent : MonoBehaviour {
         }
         #endregion
 
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position, movement);
-        if (!Physics.Raycast(ray, out hit, 0.8f)) {
-            transform.Translate(movement);
-        }
+        transform.Translate(movement);
+    }
+
+    public void SpeedUp(float addValue) {
+        speed += addValue;
     }
 }

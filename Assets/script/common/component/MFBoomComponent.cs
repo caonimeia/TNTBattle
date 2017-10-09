@@ -11,14 +11,6 @@ public class MFBoomComponent : MonoBehaviour {
         Assert.IsNotNull(_boomObj);
     }
 
-    private void Update() {
-        RaycastHit hit;
-        Ray ray = new Ray(transform.position, transform.forward);
-        if (Physics.Raycast(ray, out hit, 0.8f, 1 << LayerMask.NameToLayer(LayerMaskDef.player))) {
-            SendBoom(hit.transform.gameObject.GetComponent<MFBoomComponent>());
-        }
-    }
-
     public void ReceiveBoom() {
         _boomObj.SetActive(true);
     }
@@ -26,5 +18,9 @@ public class MFBoomComponent : MonoBehaviour {
     public void SendBoom(MFBoomComponent target) {
         target.ReceiveBoom();
         _boomObj.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        
     }
 }

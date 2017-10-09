@@ -17,10 +17,6 @@ public class MFCharacter : MonoBehaviour {
     public void ReceiveBoom() {
         _boomComp.ReceiveBoom();
     }
-
-    public void OnCollide(GameObject target) {
-
-    }
 }
 
 

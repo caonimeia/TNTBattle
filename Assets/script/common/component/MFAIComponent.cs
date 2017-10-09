@@ -10,13 +10,17 @@ public enum CharacterState {
 
 public class MFAIComponent : MonoBehaviour {
     private MFMoveComponent _moveComp;
-    private float _minRayDistance = 1f;
     public float obstacleRange = 5f;
     private CharacterState _curState;
+
+    private float _curMoveX;
+    private float _curMoveZ;
 
     private void Awake() {
         _moveComp = GetComponent<MFMoveComponent>();
         _curState = CharacterState.noBoom;
+        _curMoveX = Random.Range(-1, 1);
+        _curMoveZ = Random.Range(-1, 1);
     }
 
 	// Use this for initialization
@@ -33,38 +37,25 @@ public class MFAIComponent : MonoBehaviour {
                 break;
 
             case CharacterState.hadBoom:
-                CatchOther();
+                //CatchOther();
                 break;
         }
         
     }
 
     private void RandomMove() {
-        #region debug模式下显示射线
-        if (MFApplicationUtil.IsOpenDebug()) {
-            RaycastHit dhit;
-            if (Physics.Raycast(new Ray(transform.position, transform.forward), out dhit))
-                Debug.DrawLine(transform.position, dhit.point, Color.red);
-        }
-        #endregion
-
         RaycastHit hit;
         while (true) {
-            Ray ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(ray, out hit)) {
-                if (hit.distance < obstacleRange) {
-                    float angle = Random.Range(-110, 110);
-                    transform.Rotate(0, angle, 0);
-                } else {
-                    break;
-                }
+            Ray ray = new Ray(transform.position, new Vector3(_curMoveX, 0, _curMoveZ));
+            if (Physics.Raycast(ray, out hit, obstacleRange, 1 << LayerMask.NameToLayer(MFLayerMaskDef.wall))) {
+                _curMoveX = Random.Range(-1, 1);
+                _curMoveZ = Random.Range(-1, 1);
+                continue;
             }
+
+            break;
         }
 
-        _moveComp.Move(0, 0, Time.deltaTime);
-    }
-
-    private void CatchOther() {
-
+        _moveComp.Move(_curMoveX * Time.deltaTime, 0, _curMoveZ * Time.deltaTime);
     }
 }

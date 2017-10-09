@@ -5,12 +5,12 @@ using UnityEngine;
 public class MFRobot : MonoBehaviour {
     private MFMoveComponent _moveComp;
     private MFBoomComponent _boomComp;
-    private MFAIComponent   _aiComp;
+    private MFAIComponent _aiComp;
 
     private void Awake() {
         _moveComp = gameObject.AddComponent<MFMoveComponent>();
         _boomComp = gameObject.AddComponent<MFBoomComponent>();
-        _aiComp   = gameObject.AddComponent<MFAIComponent>();
+        _aiComp = gameObject.AddComponent<MFAIComponent>();
     }
 
     // Use this for initialization
