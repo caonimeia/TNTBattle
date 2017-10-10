@@ -14,12 +14,10 @@ public class MFCharacter : MonoBehaviour {
     }
 
     public void Move(float moveX, float moveY, float moveZ) {
-        
         _moveComp.Move(moveX, moveY, moveZ);
     }
 
     public void StopMove() {
-        
         _moveComp.StopMove();
     }
 

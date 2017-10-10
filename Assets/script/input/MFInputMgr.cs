@@ -41,18 +41,17 @@ public class MFInputMgr {
         if (Input.GetAxis("Vertical") != 0)
             moveZ = Input.GetAxis("Vertical");
 
-        Vector3 toward = Vector3.zero;
-        if (Input.GetKey(KeyCode.A))
-            toward.x = -1f;
-        if (Input.GetKey(KeyCode.D))
-            toward.x = 1f;
-        if (Input.GetKey(KeyCode.W))
-            toward.z = 1f;
-        if (Input.GetKey(KeyCode.S))
-            toward.z = -1f;
+        //if (Input.GetKey(KeyCode.A))
+        //    moveX = -0.5f;
+        //if (Input.GetKey(KeyCode.D))
+        //    moveX = 0.5f;
+        //if (Input.GetKey(KeyCode.W))
+        //    moveZ = 0.5f;
+        //if (Input.GetKey(KeyCode.S))
+        //    moveZ = -0.5f;
 
         if (moveX != 0 || moveZ != 0)
-            _character.Move(toward.x, 0, toward.z);
+            _character.Move(moveX, 0, moveZ);
         else
             _character.StopMove();
     }

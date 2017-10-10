@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.Assertions;
+using DG.Tweening;
 
 public enum MoveState
 {
@@ -60,10 +61,10 @@ public class MFMoveComponent : MonoBehaviour {
         switch (_curMoveState)
         {
             case MoveState.moving:
-                MFLog.LogInfo(_characterModel.transform.forward);
-                float angle = Vector3.Angle(_characterModel.transform.forward, _curMovement);
-                _characterModel.transform.RotateAround(transform.position, Vector3.up, angle);
                 _rigid.velocity = _curMovement * speed;
+                float angle = Vector3.Angle(_characterModel.transform.forward, _curMovement);
+                //_characterModel.transform.RotateAround(transform.position, Vector3.up, angle);
+                _characterModel.transform.DOLocalRotate(new Vector3(0, angle, 0), 0.5f);
                 break;
             default:
                 break;
