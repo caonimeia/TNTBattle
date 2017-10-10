@@ -56,6 +56,6 @@ public class MFAIComponent : MonoBehaviour {
             break;
         }
 
-        _moveComp.Move(_curMoveX * Time.deltaTime, 0, _curMoveZ * Time.deltaTime);
+        //_moveComp.Move(_curMoveX, 0, _curMoveZ);
     }
 }

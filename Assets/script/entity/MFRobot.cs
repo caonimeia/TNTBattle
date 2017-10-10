@@ -8,7 +8,7 @@ public class MFRobot : MonoBehaviour {
     private MFAIComponent _aiComp;
 
     private void Awake() {
-        _moveComp = gameObject.AddComponent<MFMoveComponent>();
+        //_moveComp = gameObject.AddComponent<MFMoveComponent>();
         _boomComp = gameObject.AddComponent<MFBoomComponent>();
         _aiComp = gameObject.AddComponent<MFAIComponent>();
     }

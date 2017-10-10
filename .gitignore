@@ -35,3 +35,4 @@ sysinfo.txt
 ProjectSettings/UnityAdsSettings.asset
 ProjectSettings/UnityAdsSettings.asset.meta
 /release*
+/Assets/DungeonCharacters*

@@ -36,13 +36,25 @@ public class MFInputMgr {
         float moveZ = 0;
 
         if (Input.GetAxis("Horizontal") != 0)
-            moveX = Input.GetAxis("Horizontal") * Time.deltaTime;
+            moveX = Input.GetAxis("Horizontal");
 
         if (Input.GetAxis("Vertical") != 0)
-            moveZ = Input.GetAxis("Vertical") * Time.deltaTime;
+            moveZ = Input.GetAxis("Vertical");
+
+        Vector3 toward = Vector3.zero;
+        if (Input.GetKey(KeyCode.A))
+            toward.x = -1f;
+        if (Input.GetKey(KeyCode.D))
+            toward.x = 1f;
+        if (Input.GetKey(KeyCode.W))
+            toward.z = 1f;
+        if (Input.GetKey(KeyCode.S))
+            toward.z = -1f;
 
         if (moveX != 0 || moveZ != 0)
-            _character.Move(moveX, 0, moveZ);
+            _character.Move(toward.x, 0, toward.z);
+        else
+            _character.StopMove();
     }
 
     private void ProcessCommand() {
