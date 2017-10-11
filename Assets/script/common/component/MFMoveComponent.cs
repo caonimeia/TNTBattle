@@ -14,12 +14,8 @@ public class MFMoveComponent : MonoBehaviour {
     private Rigidbody _rigid;
     private MoveState _curMoveState;
     private Vector3 _curMovement;
-    private float angleY = 0f;
-
     private Animation _animation;
     private GameObject _characterModel;
-   
-
 
     private void Awake() {
         _rigid = GetComponent<Rigidbody>();
@@ -36,15 +32,28 @@ public class MFMoveComponent : MonoBehaviour {
         _curMoveState = MoveState.moving;
         _curMovement = new Vector3(moveX, moveY, moveZ);
 
-        //transform.RotateAround(transform.position, Vector3.up, Vector3.Angle(transform.forward, _curMovement));
-        
         #region debug模式下显示射线
         if (MFApplicationUtil.IsOpenDebug()) {
             RaycastHit dhit;
-            if (Physics.Raycast(new Ray(transform.position, _curMovement), out dhit))
+            if (Physics.Raycast(new Ray(gameObject.transform.position, _curMovement), out dhit))
                 Debug.DrawLine(transform.position, dhit.point, Color.red);
         }
         #endregion        
+    }
+
+    private void StartMove() {
+        _rigid.velocity = _curMovement * speed;
+    }
+
+    private void StartRotate() {
+        float angle = Vector3.Angle(gameObject.transform.forward, _curMovement);
+        float direction = Vector3.Cross(gameObject.transform.forward.normalized, _curMovement.normalized).y;
+        if (direction > 0)
+            gameObject.transform.Rotate(0, angle, 0);
+        else if (direction < 0)
+            gameObject.transform.Rotate(0, -angle, 0);
+        else
+            gameObject.transform.Rotate(0, angle, 0);
     }
 
     public void StopMove() {
@@ -58,13 +67,12 @@ public class MFMoveComponent : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        
         switch (_curMoveState)
         {
             case MoveState.moving:
-                _rigid.velocity = _curMovement * speed;
-                float angle = Vector3.Angle(_characterModel.transform.forward, _curMovement);
-                //_characterModel.transform.RotateAround(transform.position, Vector3.up, angle);
-                _characterModel.transform.DOLocalRotate(new Vector3(0, angle, 0), 0.5f);
+                StartMove();
+                StartRotate();
                 break;
             default:
                 break;
