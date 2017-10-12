@@ -46,14 +46,14 @@ public class MFMoveComponent : MonoBehaviour {
     }
 
     private void StartRotate() {
-        float angle = Vector3.Angle(gameObject.transform.forward, _curMovement);
-        float direction = Vector3.Cross(gameObject.transform.forward.normalized, _curMovement.normalized).y;
+        float angle = Vector3.Angle(_characterModel.transform.forward, _curMovement);
+        float direction = Vector3.Cross(_characterModel.transform.forward.normalized, _curMovement.normalized).y;
         if (direction > 0)
-            gameObject.transform.Rotate(0, angle, 0);
+            _characterModel.transform.Rotate(0, angle, 0);
         else if (direction < 0)
-            gameObject.transform.Rotate(0, -angle, 0);
+            _characterModel.transform.Rotate(0, -angle, 0);
         else
-            gameObject.transform.Rotate(0, angle, 0);
+            _characterModel.transform.Rotate(0, angle, 0);
     }
 
     public void StopMove() {
