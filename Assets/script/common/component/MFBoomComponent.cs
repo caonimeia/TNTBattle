@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+public enum BoomState {
+
+}
+
 public class MFBoomComponent : MonoBehaviour {
     private GameObject _boomObj;
+    
    
     private void Awake() {
         _boomObj = MFGameObjectUtil.Find(this, "boom");
@@ -21,6 +26,6 @@ public class MFBoomComponent : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        
+        //collision.gameObject
     }
 }

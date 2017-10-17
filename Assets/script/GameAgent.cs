@@ -12,11 +12,13 @@ public class GameAgent : MonoBehaviour {
         _inputMgr.Init();
 
         MFUIMgr.Init();
+        MFRobotMgr.Init();
     }
 
     // Use this for initialization
     private void Start() {
         MFNetManager.GetInstance().Connect();
+        MFRobotMgr.AddSomeRobot();
     }
 
     // Update is called once per frame
