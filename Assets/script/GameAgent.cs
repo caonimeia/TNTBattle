@@ -25,6 +25,8 @@ public class GameAgent : MonoBehaviour {
     private void Update() {
         MFNetManager.GetInstance().Update();
         MFInputMgr.GetInstance().Update();
+        //MFBoomMgr.Update();
+        MFTimer.Update();
     }
 
     private void FixedUpdate() {

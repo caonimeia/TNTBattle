@@ -63,7 +63,7 @@ public class MFInputMgr {
 
         // 把炸弹装在自己头上
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.B))
-            _character.ReceiveBoom();
+            _character.ReceiveBoom(MFBoomDef.boomLiveTime);
 
     }
 }

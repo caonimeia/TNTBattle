@@ -27,8 +27,8 @@ public class MFCharacter : MonoBehaviour {
         _moveComp.StopMove();
     }
 
-    public void ReceiveBoom() {
-        _boomComp.ReceiveBoom();
+    public void ReceiveBoom(float leftTime) {
+        _boomComp.ReceiveBoom(leftTime);
     }
 }
 
