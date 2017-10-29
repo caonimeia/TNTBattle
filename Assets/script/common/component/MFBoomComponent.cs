@@ -17,7 +17,7 @@ public class MFBoomComponent : MonoBehaviour {
     private BoomState _boomState;
     private float _passTime;
     private int _timerId;
-   
+
     private void Awake() {
         _boomObj = MFGameObjectUtil.Find(this, "boom");
         Assert.IsNotNull(_boomObj);
@@ -35,7 +35,7 @@ public class MFBoomComponent : MonoBehaviour {
         _boomState = BoomState.withBoom;
 
         MFLog.LogInfo(_leftTime);
-        _timerId = MFTimer.Register(_leftTime, () => {
+        _timerId = MFTimer.RegisterOnce(_leftTime, () => {
             Boom();
         });
     }
