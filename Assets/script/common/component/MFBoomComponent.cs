@@ -38,6 +38,8 @@ public class MFBoomComponent : MonoBehaviour {
         _timerId = MFTimer.RegisterOnce(_leftTime, () => {
             Boom();
         });
+
+        MFUIMgr.Open<MFBattleInfoView>();
     }
 
     public void SendBoom(MFBoomComponent target, float leftTime) {
