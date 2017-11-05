@@ -9,5 +9,5 @@ public class MFLayerMaskDef {
 
 
 public class MFBoomDef {
-    public const float boomLiveTime = 10f;
+    public const float boomLiveTime = 3f;
 }

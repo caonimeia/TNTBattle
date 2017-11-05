@@ -28,4 +28,15 @@ public class MFBattleInfoView : MFUIBase {
             leftTime.text = (--sec).ToString();
         });
     }
+
+    protected override void OnShow() {
+        base.OnShow();
+        MFLog.LogInfo("OnShow");
+    }
+
+    protected override void OnClose() {
+        base.OnClose();
+        MFTimer.UnRegister(timerId);
+        MFLog.LogInfo("OnClose");
+    }
 }

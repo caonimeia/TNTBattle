@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224130909433411236}
-  - component: {fileID: 114293544898821000}
+  - component: {fileID: 114413870358641656}
   m_Layer: 5
   m_Name: BattleInfoView
   m_TagString: Untagged
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114293544898821000
+--- !u!114 &114413870358641656
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

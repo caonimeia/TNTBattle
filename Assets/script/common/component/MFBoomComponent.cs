@@ -60,6 +60,7 @@ public class MFBoomComponent : MonoBehaviour {
     }
 
     private void Boom() {
+        MFUIMgr.Close<MFBattleInfoView>();
         MFLog.LogInfo("Boom!!!!!");
     }
 

@@ -12,10 +12,6 @@ public class MFUIBase : UIBehaviour {
         base.Start();
 	}
 
-    protected virtual void Update() {
-
-    }
-
     protected override void OnEnable() {
         base.OnEnable();
     }
@@ -26,5 +22,17 @@ public class MFUIBase : UIBehaviour {
 
     protected override void OnDestroy() {
         base.OnDestroy();
+    }
+
+    protected virtual void Update() {
+
+    }
+
+    protected virtual void OnShow() {
+
+    }
+
+    protected virtual void OnClose() {
+
     }
 }
